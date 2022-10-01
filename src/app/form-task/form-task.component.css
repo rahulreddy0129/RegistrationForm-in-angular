@@ -1,0 +1,26 @@
+label{
+    font-size: small;
+}
+input{
+    height: 35px;
+}
+select{
+    height: 35px;
+}
+
+.btn-primary{
+    background-image: linear-gradient(to right, #325ca8bd, rgb(84, 150, 161));
+
+}
+input.ng-invalid{
+    border-left:5px solid red ;
+}
+input.ng-valid{
+    border-left: 5px solid green ;
+}
+select.ng-invalid{
+    border-left:5px solid red ;
+}
+select.ng-valid{
+    border-left: 5px solid green ;
+}

@@ -1,0 +1,223 @@
+<div class="container">
+    <div class="row">
+        <h5 class="bg-light">New Experiment</h5>
+    </div>
+    <form [formGroup]="expForm">
+        <div class="section-1 mt-3">
+            <div class="row">
+                <div class="form-group col-sm-3">
+                    <label>Product</label>
+                    <select class="form-select" formControlName="product" aria-label="Default select example">
+                        <option selected>select</option>
+                        <option value="1">One</option>
+                        <option value="2">Two</option>
+                        <option value="3">Three</option>
+                    </select>
+                </div>
+                <div class="form-group col-sm-3">
+                    <label for="exampleFormControlSelect1">Route</label>
+                    <select class="form-select" formControlName="route" aria-label="Default select example">
+                        <option selected>Select</option>
+                        <option value="1">One</option>
+                        <option value="2">Two</option>
+                        <option value="3">Three</option>
+                    </select>
+                </div>
+                <div class="form-group col-sm-3">
+                    <label for="exampleFormControlSelect1">Stage</label>
+                    <select class="form-select" formControlName="stage" aria-label="Default select example">
+                        <option selected>Select</option>
+                        <option value="1">One</option>
+                        <option value="2">Two</option>
+                        <option value="3">Three</option>
+                    </select>
+                </div>
+                <div class="form-group col-sm-3">
+                    <label>Project Status</label>
+                    <input type="text" class="form-control ng-untouched ng-pristine ng-valid" formControlName="projectStatus"
+                        placeholder="Enter Project status" required>
+                </div>
+            </div>
+            <div class="row">
+                <div class="form-group col-sm-3">
+                    <label>Exp. No.</label>
+                    <input type="text" class="form-control" formControlName="expNo"
+                        placeholder="Enter Experiment Number">
+                </div>
+                <div class="form-group col-sm-3">
+                    <label>Date</label>
+                    <input type="date" class="form-control" formControlName="date" id="date" name="date">
+                </div>
+                <div class="form-group col-sm-6">
+                    <label>Aim</label>
+                    <input type="text" class="form-control " formControlName="aim" placeholder="Aim">
+                </div>
+            </div>
+        </div>
+        <div class="section-2 mt-4 ">
+            <h6 class="text-info">Raw Materials</h6>
+            <div class="bg-light py-2" formArrayName="rawMaterialsList">
+                <div class="row mt-3" *ngFor="let item of expForm.get('rawMaterialsList')['controls']; let i=index;" [formGroupName]="i">
+                    <div class="form-group col-sm-2">
+                        <label for="exampleFormControlSelect1">Select material</label>
+                        <select class="form-select" formControlName="material" aria-label="Default select example">
+                            <option selected>Select</option>
+                            <option value="1">One</option>
+                            <option value="2">Two</option>
+                            <option value="3">Three</option>
+                        </select>
+                    </div>
+                    <div class="form-group col-sm-1">
+                        <label>Qty</label>
+                        <input type="text" class="form-control" formControlName="quantity" placeholder="">
+                    </div>
+                    <div class="form-group col-sm-1">
+                        <label>Inventary</label>
+                        <input type="text" class="form-control" formControlName="inventary" placeholder="">
+                    </div>
+                    <div class="form-group col-sm-1">
+                        <label>Unit</label>
+                        <input type="text" class="form-control" formControlName="unit" placeholder="">
+                    </div>
+                    <div class="form-group col-sm-1">
+                        <label>Mol.Wt.</label>
+                        <input type="text" class="form-control" formControlName="molWt" placeholder="">
+                    </div>
+                    <div class="form-group col-sm-1">
+                        <label>Moles</label>
+                        <input type="text" class="form-control" formControlName="moles" placeholder="">
+                    </div>
+                    <div class="form-group col-sm-2">
+                        <label>Mole Ration</label>
+                        <input type="text" class="form-control" formControlName="moleRatio" placeholder="">
+                    </div>
+                    <div class="form-group col-sm-3">
+                        <label>Remarks</label>
+                        <input type="text" class="form-control" formControlName="remarks" placeholder="">
+                    </div>
+                </div>
+                <div class=" d-flex flex-row-reverse mt-2">
+                    <button (click)="addRawMaterialRow()" class="btn btn-sm btn-success rounded-circle">+</button>
+                </div>
+            </div>
+
+
+        </div>
+        <div>
+            <div class="form-group">
+                <label>Brief Description of Experiment Planned</label>
+                <input type="text" class="form-control" formControlName="description" placeholder="">
+            </div>
+        </div>
+        <div class="section-3 mt-4">
+            <h6 class="text-info">Operations</h6>
+            <div class="bg-light py-2" formArrayName="operationsList">
+                <div class="row  mt-3 " *ngFor="let item of expForm.get('operationsList')['controls']; let i=index;" [formGroupName]="i">
+                    <div class="col-sm-2">
+                        <label>From Time(Hrs.)</label>
+                        <input type="date" class="form-control" formControlName="fromTime" id="date" name="date">
+                    </div>
+                    <div class="col-sm-2">
+                        <label>To Time(Hrs.)</label>
+                        <input type="date" class="form-control" formControlName="toTime" id="date" name="date">
+                    </div>
+                    <div class="col-sm-2">
+                        <label>Temp(°C)</label>
+                        <input type="text" class="form-control" formControlName="temp" placeholder="">
+                    </div>
+                    <div class="col-sm-3">
+                        <label>Operation</label>
+                        <input type="text" class="form-control" formControlName="operation" placeholder="">
+                    </div>
+                    <div class="col-sm-3">
+                        <label>Observation</label>
+                        <input type="text" class="form-control" formControlName="observation" placeholder="">
+                    </div>
+                </div>
+                <div class=" d-flex flex-row-reverse mt-2">
+                    <button (click)="addOperationRow()" class="btn btn-sm btn-success rounded-circle">+</button>
+                </div>
+            </div>
+        </div>
+        <div>
+            <div class="form-group">
+                <label>Observations:</label>
+                <input type="text" class="form-control" formControlName="observations" placeholder="">
+            </div>
+        </div>
+        <div class="section-4 mt-4">
+            <h6 class="text-info">Yield and Quality analysts</h6>
+            <div class="row bg-light mt-3">
+                <div class="col-md-1">
+                    <label for="exampleFormControlSelect1">Wet Uom</label>
+                    <select class="form-select" aria-label="Default select example" formControlName="wetUom" >
+                        <option selected>Select</option>
+                        <option value="1">One</option>
+                        <option value="2">Two</option>
+                        <option value="3">Three</option>
+                    </select>
+                </div>
+                <div class="col-md-2">
+                    <label>Wet Wt</label>
+                    <input type="text" class="form-control" formControlName="wetWt" placeholder="">
+                </div>
+                <div class="col-md-1">
+                    <label for="exampleFormControlSelect1">Dry Uom</label>
+                    <select class="form-select" formControlName="dryUom" aria-label="Default select example">
+                        <option selected>Select</option>
+                        <option value="1">One</option>
+                        <option value="2">Two</option>
+                        <option value="3">Three</option>
+                    </select>
+                </div>
+                <div class="col-md-2">
+                    <label>Dry Wt</label>
+                    <input type="text" class="form-control" formControlName="dryWt" placeholder="">
+                </div>
+                <div class="col-md-1">
+                    <label>% of Yield</label>
+                    <input type="text" class="form-control" formControlName="yield" placeholder="">
+                </div>
+                <div class="col-md-3">
+                    <label>Remarks</label>
+                    <input type="text" class="form-control" formControlName="remarks" placeholder="">
+                </div>
+            </div>
+        </div>
+        <div class="section-5 mt-4">
+            <h6 class="text-info">Analytical Results:</h6>
+            <div class=" bg-light py-2" formArrayName="analyticalResultsList">
+                <div class="row mt-3" *ngFor="let item of expForm.get('analyticalResultsList')['controls']; let i=index;" [formGroupName]="i">
+                    <div class="col-md-4">
+                        <label>Name of Test</label>
+                        <input type="text" class="form-control" formControlName="testName" placeholder="">
+                    </div>
+                    <div class="col-md-2">
+                        <label>Result</label>
+                        <input type="text" class="form-control" formControlName="result" placeholder="">
+                    </div>
+                    <div class="col-md-3">
+                        <label for="formFile">Attachment</label>
+                        <input type="file" id="myFile" formControlName="attachment" name="filename">
+                    </div>
+                </div>
+                <div class=" d-flex flex-row-reverse mt-2">
+                    <button (click)="addAnalyticalResultsRow()" class="btn btn-sm btn-success rounded-circle">+</button>
+                </div>
+            </div>
+        </div>
+        <div>
+            <div class="form-group">
+                <label>Conclusion:</label>
+                <input type="text" class="form-control" formControlName="conclusion" placeholder="">
+            </div>
+        </div>
+        <div class="d-flex flex-row-reverse my-3">
+            <button class="btn btn-secondary">Cancel</button>
+            <button class="btn btn-primary mx-2">Save</button>
+        </div>
+    </form>
+</div>
+
+<input type="button" class="btn btn-danger"><i class="fa-solid fa-trash"></i>>
+
